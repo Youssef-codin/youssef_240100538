@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-//
+
 // Reuse the same Node structure
 struct Node {
     int data;
@@ -48,6 +48,21 @@ public:
         }
 
         nPointer->next = newNode;
+    }
+
+    int pop(){
+        if(isEmpty()){
+            return -1;
+        }
+
+
+        int value = top->data;
+        Node* old = top;
+        top = top->next;
+
+        delete old;
+
+        return value;
     }
    
     // Function to display all elements
@@ -100,6 +115,24 @@ public:
         tail = newNode;
     }
 
+    int dequeue(){
+        if(isEmpty()){
+            return -1;
+        }
+
+        int value = head->data;
+        Node* old = head;
+        head = head->next;
+
+        delete old;
+
+        if(head == NULL){
+            tail = NULL;
+        }
+
+        return value;
+    }
+
     // Function to display all elements
     void display() const {
         Node* nPointer = head;
@@ -109,6 +142,7 @@ public:
         }
     }
 };
+
 int main() {
     Queue q;
     q.enqueue(10);
