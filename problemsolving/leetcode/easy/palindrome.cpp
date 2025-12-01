@@ -28,3 +28,7 @@ public:
         return false;
     }
 };
+
+int main (int argc, char *argv[]) {
+    Solution sol;
+}

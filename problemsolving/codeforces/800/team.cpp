@@ -31,7 +31,6 @@ int team(string solutions, int problems){
 }
 
 int main() {
-    
     cout << team("1 1 0 \n 1 1 1 \n 1 0 0", 3);
     return 0;
 }
