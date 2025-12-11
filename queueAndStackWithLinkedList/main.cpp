@@ -2,14 +2,14 @@
 using namespace std;
 
 // Reuse the same Node structure
-struct Node {
+struct node {
     int data;
-    Node* next;
+    node* next;
 };
 
 class Stack {
 private:
-    Node* top; // points to the top node of the stack
+    node* top; // points to the top node of the stack
 
     bool isEmpty(){
         if(top == NULL){
@@ -23,9 +23,9 @@ public:
     Stack() { top = NULL; } // constructor
 
     ~Stack() {
-        Node* nPointer = top;
+        node* nPointer = top;
         while(nPointer != NULL){
-            Node* nextNode = nPointer->next;
+            node* nextNode = nPointer->next;
             delete nPointer;
             nPointer = nextNode;
         }
@@ -33,7 +33,7 @@ public:
     
     // Function to add a new element to the stack
     void push(int value) {
-        Node* newNode = new Node;
+        node* newNode = new node;
         newNode->data = value;
         newNode->next = NULL;
 
@@ -42,7 +42,7 @@ public:
             return;
         }
 
-        Node* nPointer = top;
+        node* nPointer = top;
         while(nPointer->next != NULL){
             nPointer = nPointer->next;
         }
@@ -55,9 +55,8 @@ public:
             return -1;
         }
 
-
         int value = top->data;
-        Node* old = top;
+        node* old = top;
         top = top->next;
 
         delete old;
@@ -67,7 +66,7 @@ public:
    
     // Function to display all elements
     void display() const {
-        Node* nPointer = top;
+        node* nPointer = top;
         while(nPointer != NULL){
             cout << nPointer->data << '\n';
             nPointer = nPointer->next;
@@ -77,8 +76,8 @@ public:
 
 class Queue {
 private:
-    Node* head; // points to the first node
-    Node* tail; // points to the last node
+    node* head; // points to the first node
+    node* tail; // points to the last node
 
     bool isEmpty(){
         if(head == NULL | tail == NULL){
@@ -93,16 +92,16 @@ public:
     }
 
     ~Queue(){
-        Node* nPointer = head;
+        node* nPointer = head;
         while(nPointer != NULL){
-            Node* nextNode = nPointer->next;
+            node* nextNode = nPointer->next;
             delete nPointer;
             nPointer = nextNode;
         }
     }
 
     void enqueue(int value) {
-        Node* newNode = new Node;
+        node* newNode = new node;
         newNode->data = value;
         newNode->next = NULL;
 
@@ -121,7 +120,7 @@ public:
         }
 
         int value = head->data;
-        Node* old = head;
+        node* old = head;
         head = head->next;
 
         delete old;
@@ -135,7 +134,7 @@ public:
 
     // Function to display all elements
     void display() const {
-        Node* nPointer = head;
+        node* nPointer = head;
         while(nPointer != NULL){
             cout << nPointer->data << '\n';
             nPointer = nPointer->next;

@@ -2,12 +2,12 @@
 
 using namespace std;
 
-struct Node {
+struct node {
     int data;
-    Node* prev;
-    Node* next;
+    node* prev;
+    node* next;
 
-    Node() {
+    node() {
         prev = nullptr;
         next = nullptr;
     }
@@ -15,8 +15,12 @@ struct Node {
 
 class doublyLinkedList {
 private:
-    Node* head;
-    Node* tail;
+    node* head;
+    node* tail;
+
+    bool isEmpty(){
+        return head == nullptr;
+    }
 
 public:
     doublyLinkedList() {
@@ -24,7 +28,7 @@ public:
     }
 
     void pushFront(int data) {
-        Node* node = new Node;
+        node* node = new struct node;
         node->data = data;
 
         if (head == nullptr || tail == nullptr) {
@@ -38,7 +42,7 @@ public:
     }
 
     void pushBack(int val) {
-        Node* node = new Node;
+        node* node = new struct node;
         node->data = val;
         node->next = nullptr;
 
@@ -52,8 +56,46 @@ public:
         tail = node;
     }
 
+    node* search(int value) {
+         if (isEmpty()) {
+            return nullptr;
+        }
+
+        node* current = head;
+        while (current != nullptr) {
+            if (current->data == value) {
+                return current; 
+            }
+            current = current->next;
+        }
+
+        return nullptr; 
+    }
+
+    void remove(int value) {
+        if (isEmpty()) {
+            return;
+        }
+
+        if (head->data == value) {
+            node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+
+        node* searchNode = search(value);
+        if (searchNode == nullptr) {
+            return;
+        }
+
+        node* target = searchNode;
+        searchNode->prev->next = target->next;
+        delete target;
+    }
+
     void display() const {
-        Node* nPointer = head;
+        node* nPointer = head;
         while(nPointer != NULL){
             cout << nPointer->data << '\n';
             nPointer = nPointer->next;
@@ -61,9 +103,9 @@ public:
     }
 
     ~doublyLinkedList() {
-        Node* cur = head;
+        node* cur = head;
         while (cur != nullptr) {
-            Node* next = cur->next;
+            node* next = cur->next;
             delete cur;
             cur = next;
         }

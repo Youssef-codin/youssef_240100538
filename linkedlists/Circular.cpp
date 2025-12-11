@@ -2,19 +2,19 @@
 
 using namespace std;
 
-struct Node {
+struct node {
     int data;
-    Node* next;
+    node* next;
 
-    Node() {
+    node() {
         next = nullptr;
     }
 };
 
 class circularLinkedList {
 private:
-    Node* head;
-    Node* tail;
+    node* head;
+    node* tail;
 
 public:
     circularLinkedList() {
@@ -22,7 +22,7 @@ public:
     }
 
     void pushFront(int value) {
-        Node* node = new Node;
+        node* node = new struct node;
         node->data = value;
 
         if (head == nullptr) {
@@ -37,7 +37,7 @@ public:
     }
 
     void pushBack(int value) {
-        Node* node = new Node;
+        node* node = new struct node;
         node->data = value;
 
         if (head == nullptr) {
@@ -54,7 +54,7 @@ public:
     void display() const {
         if (head == nullptr) return;
 
-        Node* cur = head;
+        node* cur = head;
         do {
             cout << cur->data << '\n';
             cur = cur->next;
@@ -64,9 +64,9 @@ public:
     ~circularLinkedList() {
         if (head == nullptr) return;
 
-        Node* cur = head->next;
+        node* cur = head->next;
         while (cur != head) {
-            Node* next = cur->next;
+            node* next = cur->next;
             delete cur;
             cur = next;
         }

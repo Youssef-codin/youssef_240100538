@@ -10,7 +10,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-//TODO: NOT DONE
+//TODO: NOT DONE.
 // https://leetcode.com/problems/merge-two-sorted-lists/description/
 class Solution {
 public:
