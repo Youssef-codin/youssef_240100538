@@ -38,10 +38,6 @@ public:
     }
 };
 
-// ============================================================
-// HELPER FUNCTIONS
-// ============================================================
-
 int precedence(char op) {
     // TODO:
 }
@@ -50,9 +46,6 @@ bool isOperator(char ch) {
     // TODO:
 }
 
-// ============================================================
-// CONVERSION: INFIX TO POSTFIX
-// ============================================================
 string infixToPostfix(const string& infix) {
     Stack st;
     string postfix = "";
